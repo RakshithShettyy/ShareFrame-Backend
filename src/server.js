@@ -5,8 +5,11 @@ const { PrismaClient } = require("@prisma/client");
 const port = process.env.PORT || 3000;
 const app = express();
 const prisma = new PrismaClient();
+const authRoutes = require("./routes/auth");
 
 app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 app.listen(port, () => {
   console.log(`🚀 Server is up & running on http://localhost:${port}`);
